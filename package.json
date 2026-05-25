@@ -1,0 +1,8 @@
+{
+  "name": "moodify",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd Backend && npm install && cd ../Frontend && npm install --include=dev && npm run build",
+    "start": "cd Backend && node server.js"
+  }
+}
