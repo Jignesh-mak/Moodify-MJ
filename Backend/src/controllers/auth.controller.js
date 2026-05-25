@@ -9,7 +9,7 @@ async function registerUser(req,res){
   const isAlreadyRegistered = await userModel.findOne({
     $or: [
       { email },
-      { password }
+      { username }
     ]
   })
 
