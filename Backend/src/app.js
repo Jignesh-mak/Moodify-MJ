@@ -29,7 +29,7 @@ app.use("/api/songs",songRoutes)
 app.use(express.static(path.join(__dirname, '../Frontend/dist')))
 
 // Catch-all for React Router — must be LAST
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
     res.sendFile(path.join(__dirname, '../Frontend/dist', 'index.html'))
 })
 module.exports = app  
