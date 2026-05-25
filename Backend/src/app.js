@@ -26,10 +26,14 @@ app.use("/api/auth",authRoutes)
 app.use("/api/songs",songRoutes)
 
 // Serve frontend — add AFTER your API routes
-app.use(express.static(path.join(__dirname, '../Frontend/dist')))
+const frontendPath = process.env.NODE_ENV === 'production'
+  ? '/opt/render/project/src/Frontend/dist'
+  : path.join(__dirname, '../Frontend/dist')
+
+app.use(express.static(frontendPath))
 
 // Catch-all for React Router — must be LAST
 app.get('/{*splat}', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Frontend/dist', 'index.html'))
+    res.sendFile(path.join(frontendPath, 'index.html'))
 })
 module.exports = app  
